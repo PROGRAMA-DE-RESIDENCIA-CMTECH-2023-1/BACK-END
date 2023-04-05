@@ -1,3 +1,4 @@
+using cmtech_backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cmtech_backend.Controllers
