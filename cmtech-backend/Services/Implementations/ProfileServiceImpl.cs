@@ -6,16 +6,31 @@ namespace cmtech_backend.Services.Implementations
 {
     public class ProfileServiceImpl : IProfileService
     {
-        private readonly IProfileRepository _profileRepository;
+        private readonly IRepository<Profile> _profileRepository;
 
-        public ProfileServiceImpl(IProfileRepository profileRepository)
+        public ProfileServiceImpl(IRepository<Profile> profileRepository)
         {
             _profileRepository = profileRepository;
         }
 
-        public async Task<List<Profile>> GetProfiles()
+        public async Task<List<Profile>> FindAll()
         {
-            return await _profileRepository.GetProfiles();
+            return await _profileRepository.FindAll();
+        }
+
+        public async Task<Profile> Create(Profile profile)
+        {
+           return await _profileRepository.Create(profile);
+        }
+
+        public async Task<Profile> Update(Profile profile)
+        {
+            return await _profileRepository.Update(profile);
+        }
+
+        public async Task<List<Profile>> Delete(int id)
+        {
+            return await _profileRepository.Delete(id);
         }
     }
 }

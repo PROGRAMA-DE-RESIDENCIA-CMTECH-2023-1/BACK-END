@@ -7,6 +7,6 @@ namespace cmtech_backend.Data.Context
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Profile> Perfil { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
     }
 }

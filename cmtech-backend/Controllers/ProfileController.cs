@@ -15,10 +15,28 @@ namespace cmtech_backend.Controllers
             _profileService = profileService;
         }
 
-        [HttpGet(Name = "GetProfiles")]
-        public async Task<List<Profile>> Get()
+        [HttpGet]
+        public async Task<List<Profile>> FindAll()
         {
-            return await _profileService.GetProfiles();
+            return await _profileService.FindAll();
+        }
+
+        [HttpPost]
+        public async Task<Profile> Create(Profile profile)
+        {
+            return await _profileService.Create(profile);
+        }
+
+        [HttpPut]
+        public async Task<Profile> Update(Profile profile)
+        {
+            return await _profileService.Update(profile);
+        }
+
+        [HttpDelete]
+        public async Task<List<Profile>> Delete(int id)
+        {
+            return await _profileService.Delete(id);
         }
     }
 }

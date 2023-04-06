@@ -3,11 +3,8 @@
 namespace cmtech_backend.Models
 {
     [Table("perfil")]
-    public class Profile
+    public class Profile : BaseEntity
     {
-        [Column("id")]
-        public int Id { get; set; }
-
         [Column("nome")]
         public string? Name { get; set; }
     }
