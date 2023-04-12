@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace cmtech_backend.Models
+namespace cmtech_backend.Models.Entitys
 {
     public class BaseEntity
     {

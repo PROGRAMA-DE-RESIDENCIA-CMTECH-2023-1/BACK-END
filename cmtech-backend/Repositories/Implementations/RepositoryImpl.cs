@@ -1,4 +1,4 @@
-﻿using cmtech_backend.Models;
+﻿using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 
 namespace cmtech_backend.Repositories.Implementations
@@ -29,9 +29,9 @@ namespace cmtech_backend.Repositories.Implementations
             return item;
         }
 
-        public async Task<T> Update(T item)
+        public async Task<T> Update(int id, T item)
         {
-            T? oldItem = await Exists(item.Id);
+            T? oldItem = await Exists(id);
             if (oldItem == null)
             {
                 throw new InvalidOperationException("Perfil não encontrado");
@@ -40,7 +40,7 @@ namespace cmtech_backend.Repositories.Implementations
             _context.SaveChanges();
             return item;
         }
-
+        
         public async Task<List<T>> Delete(int id)
         {
             T? item = await Exists(id);

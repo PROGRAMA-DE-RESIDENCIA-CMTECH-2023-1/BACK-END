@@ -1,4 +1,4 @@
-﻿using cmtech_backend.Models;
+﻿using cmtech_backend.Models.Entitys;
 using Microsoft.EntityFrameworkCore;
 
 namespace cmtech_backend.Data.Context

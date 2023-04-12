@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models;
+﻿using cmtech_backend.Models.Dtos;
+using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 using cmtech_backend.Services.Interfaces;
 
@@ -23,9 +24,10 @@ namespace cmtech_backend.Services.Implementations
            return await _profileRepository.Create(profile);
         }
 
-        public async Task<Profile> Update(Profile profile)
+        public async Task<Profile> Update(int id,CreateProfile profile)
         {
-            return await _profileRepository.Update(profile);
+            Profile newProfile = new Profile(id, profile.Name);
+            return await _profileRepository.Update(id,newProfile);
         }
 
         public async Task<List<Profile>> Delete(int id)

@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models;
+﻿using cmtech_backend.Models.Dtos;
+using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,9 +29,9 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpPut]
-        public async Task<Profile> Update(Profile profile)
+        public async Task<Profile> Update(int id, CreateProfile profile)
         {
-            return await _profileService.Update(profile);
+            return await _profileService.Update(id,profile);
         }
 
         [HttpDelete]

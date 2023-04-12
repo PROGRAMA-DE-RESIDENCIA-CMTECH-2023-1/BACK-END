@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SBPnPKrRENDGQ+POebbCv7ibP+q8udO2tQKoj8OOMfphY0wUyCFDGDOQ4s8x1cJ6vnUNXzpxaTCe+NEwrF55aw==",
+  "dgSpecHash": "OVoiUiyaWH8qF+sgpKSCRE+Wya4B/NG1QDoWf2HtV1Ep37gS7Pyucp4Y74vjI87aY01huytSRl+lNHy5UwZurg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Larissa\\Desktop\\cmtech-2\\BACK-END\\cmtech-backend\\cmtech-backend.csproj",
+  "projectFilePath": "C:\\Users\\Larissa\\Desktop\\cmtech-backend\\cmtech-backend\\cmtech-backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Larissa\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",
     "C:\\Users\\Larissa\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.3\\microsoft.entityframeworkcore.abstractions.7.0.3.nupkg.sha512",
