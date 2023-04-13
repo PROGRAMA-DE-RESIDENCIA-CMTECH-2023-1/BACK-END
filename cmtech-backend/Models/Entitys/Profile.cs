@@ -14,5 +14,10 @@ namespace cmtech_backend.Models.Entitys
             this.Name = name; 
             this.Id = id;
         }
+
+        public Profile(string name)
+        {
+            this.Name = name;
+        }
     }
 }

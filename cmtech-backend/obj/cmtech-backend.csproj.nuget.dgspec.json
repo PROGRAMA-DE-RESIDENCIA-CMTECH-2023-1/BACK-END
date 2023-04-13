@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Larissa\\Desktop\\cmtech-backend\\cmtech-backend\\cmtech-backend.csproj": {}
+    "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\cmtech-backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Larissa\\Desktop\\cmtech-backend\\cmtech-backend\\cmtech-backend.csproj": {
+    "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\cmtech-backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Larissa\\Desktop\\cmtech-backend\\cmtech-backend\\cmtech-backend.csproj",
+        "projectUniqueName": "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\cmtech-backend.csproj",
         "projectName": "cmtech-backend",
-        "projectPath": "C:\\Users\\Larissa\\Desktop\\cmtech-backend\\cmtech-backend\\cmtech-backend.csproj",
-        "packagesPath": "C:\\Users\\Larissa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Larissa\\Desktop\\cmtech-backend\\cmtech-backend\\obj\\",
+        "projectPath": "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\cmtech-backend.csproj",
+        "packagesPath": "C:\\Users\\bituc\\.nuget\\packages\\",
+        "outputPath": "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Larissa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bituc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

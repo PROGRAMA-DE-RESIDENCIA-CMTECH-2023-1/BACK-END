@@ -7,7 +7,7 @@ namespace cmtech_backend.Services.Interfaces
     {
         public Task<List<Profile>> FindAll();
 
-        public Task<Profile> Create(Profile profile);
+        public Task<Profile> Create(CreateProfile profile);
 
         public Task<Profile> Update(int id, CreateProfile profile);
 

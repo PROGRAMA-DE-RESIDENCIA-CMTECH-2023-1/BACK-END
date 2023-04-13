@@ -13,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryImpl<>));
 builder.Services.AddScoped<IProfileService, ProfileServiceImpl>();
+builder.Services.AddScoped<IGroupService, GroupServiceImpl>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

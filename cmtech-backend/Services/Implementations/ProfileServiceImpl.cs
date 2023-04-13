@@ -19,9 +19,10 @@ namespace cmtech_backend.Services.Implementations
             return await _profileRepository.FindAll();
         }
 
-        public async Task<Profile> Create(Profile profile)
+        public async Task<Profile> Create(CreateProfile profile)
         {
-           return await _profileRepository.Create(profile);
+            Profile newProfile = new Profile(profile.Name);
+            return await _profileRepository.Create(newProfile);
         }
 
         public async Task<Profile> Update(int id,CreateProfile profile)

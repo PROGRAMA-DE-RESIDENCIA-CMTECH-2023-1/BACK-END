@@ -23,7 +23,7 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<Profile> Create(Profile profile)
+        public async Task<Profile> Create(CreateProfile profile)
         {
             return await _profileService.Create(profile);
         }

@@ -1,5 +1,4 @@
 ﻿using cmtech_backend.Models.Entitys;
-using Microsoft.EntityFrameworkCore;
 
 namespace cmtech_backend.Data.Context
 {
@@ -8,5 +7,7 @@ namespace cmtech_backend.Data.Context
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Profile> Profiles { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }
