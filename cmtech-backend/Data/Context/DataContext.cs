@@ -9,5 +9,7 @@ namespace cmtech_backend.Data.Context
         public DbSet<Profile> Profiles { get; set; }
 
         public DbSet<Group> Groups { get; set; }
+
+        public DbSet<Segment> Segment { get; set; }
     }
 }
