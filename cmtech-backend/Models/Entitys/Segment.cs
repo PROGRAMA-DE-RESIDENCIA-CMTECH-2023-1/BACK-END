@@ -8,15 +8,5 @@ namespace cmtech_backend.Models.Entitys
     {
         [Column("nome")]
         public string Name { get; set; }
-
-        public Segment(int id, string name)
-        {
-            this.Id = id;
-            this.Name = name;
-        }
-        public Segment(string name)
-        {
-            this.Name = name;
-        }
     }
 }

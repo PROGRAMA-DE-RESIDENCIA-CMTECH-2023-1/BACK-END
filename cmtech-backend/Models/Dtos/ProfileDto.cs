@@ -2,8 +2,9 @@
 
 namespace cmtech_backend.Models.Dtos
 {
-    public class CreateProfile
+    public class ProfileDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
     }
