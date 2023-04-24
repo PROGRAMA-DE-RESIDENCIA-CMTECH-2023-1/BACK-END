@@ -29,9 +29,9 @@ namespace cmtech_backend.Repositories.Implementations
             return item;
         }
 
-        public async Task<T> Update(int id, T item)
+        public async Task<T> Update(T item)
         {
-            T? oldItem = await Exists(id);
+            T? oldItem = await Exists(item.Id);
             if (oldItem == null)
             {
                 throw new InvalidOperationException("Perfil não encontrado");

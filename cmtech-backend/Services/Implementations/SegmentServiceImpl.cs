@@ -1,4 +1,6 @@
-﻿using cmtech_backend.Models.Dtos;
+﻿using cmtech_backend.Models.Converter.Implementations;
+using cmtech_backend.Models.Converter.Interfaces;
+using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 using cmtech_backend.Services.Interfaces;
@@ -9,14 +11,17 @@ namespace cmtech_backend.Services.Implementations
     {
         private readonly IRepository<Segment> _segmentRepository;
 
+        private readonly SegmentConverter _converter;
+
         public SegmentServiceImpl(IRepository<Segment> segmentRepository)
         {
             _segmentRepository = segmentRepository;
+            _converter = new SegmentConverter();
         }
 
-        public async Task<Segment> Create(CreateSegment createSegment)
+        public async Task<Segment> Create(SegmentDto createSegment)
         {
-            Segment segment = new Segment(createSegment.Name);
+            Segment segment = _converter.Parse(createSegment);
             return await _segmentRepository.Create(segment);
         }
 
@@ -30,10 +35,10 @@ namespace cmtech_backend.Services.Implementations
             return await _segmentRepository.FindAll();
         }
 
-        public async Task<Segment> Update(int id, CreateSegment updateSegment)
+        public async Task<Segment> Update(SegmentDto updateSegment)
         {
-            Segment segment = new Segment(id, updateSegment.Name);
-            return await _segmentRepository.Update(id, segment);
+            Segment segment = _converter.Parse(updateSegment);
+            return await _segmentRepository.Update(segment);
         }
     }
 }

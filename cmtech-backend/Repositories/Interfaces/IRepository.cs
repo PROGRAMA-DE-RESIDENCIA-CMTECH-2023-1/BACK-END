@@ -8,7 +8,7 @@ namespace cmtech_backend.Repositories.Interfaces
 
         public Task<T> Create(T item);
 
-        public Task<T> Update(int id,T item);
+        public Task<T> Update(T item);
 
         public Task<List<T>> Delete(int id);
 

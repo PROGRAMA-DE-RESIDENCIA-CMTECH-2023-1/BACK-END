@@ -23,15 +23,15 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<Segment> Create(CreateSegment createSegment)
+        public async Task<Segment> Create(SegmentDto createSegment)
         {
             return await _segmentService.Create(createSegment);
         }
 
         [HttpPut]
-        public async Task<Segment> Update(int id, CreateSegment updateSegment)
+        public async Task<Segment> Update(SegmentDto updateSegment)
         {
-            return await _segmentService.Update(id, updateSegment);
+            return await _segmentService.Update(updateSegment);
         }
 
         [HttpDelete]

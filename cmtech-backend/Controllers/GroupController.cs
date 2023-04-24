@@ -23,15 +23,15 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<Group> Create(CreateGroup createGroup)
+        public async Task<Group> Create(GroupDto createGroup)
         {
             return await _groupService.Create(createGroup);
         }
 
         [HttpPut]
-        public async Task<Group> Update(int id, CreateGroup updateGroup)
+        public async Task<Group> Update(GroupDto updateGroup)
         {
-            return await _groupService.Update(id, updateGroup);
+            return await _groupService.Update(updateGroup);
         }
 
         [HttpDelete]

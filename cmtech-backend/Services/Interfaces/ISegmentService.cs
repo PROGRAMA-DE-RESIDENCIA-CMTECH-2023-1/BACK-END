@@ -7,9 +7,9 @@ namespace cmtech_backend.Services.Interfaces
     {
         public Task<List<Segment>> FindAll();
 
-        public Task<Segment> Create(CreateSegment createSegement);
+        public Task<Segment> Create(SegmentDto createSegement);
 
-        public Task<Segment> Update(int id, CreateSegment updateSegment);
+        public Task<Segment> Update(SegmentDto updateSegment);
 
         public Task<List<Segment>> Delete(int id);
     }

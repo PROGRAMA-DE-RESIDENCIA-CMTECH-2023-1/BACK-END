@@ -1,6 +1,7 @@
 ﻿using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cmtech_backend.Controllers
@@ -23,15 +24,15 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<Profile> Create(CreateProfile profile)
+        public async Task<Profile> Create(ProfileDto profile)
         {
             return await _profileService.Create(profile);
         }
 
         [HttpPut]
-        public async Task<Profile> Update(int id, CreateProfile profile)
+        public async Task<Profile> Update(ProfileDto profile)
         {
-            return await _profileService.Update(id,profile);
+            return await _profileService.Update(profile);
         }
 
         [HttpDelete]
