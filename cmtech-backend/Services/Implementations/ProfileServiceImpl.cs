@@ -1,10 +1,8 @@
 ﻿using cmtech_backend.Models.Converter.Implementations;
-using cmtech_backend.Models.Converter.Interfaces;
 using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 using cmtech_backend.Services.Interfaces;
-using System;
 
 namespace cmtech_backend.Services.Implementations
 {

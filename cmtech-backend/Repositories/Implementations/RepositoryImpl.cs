@@ -20,7 +20,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<T> Create(T item)
         {
-            if (Exists(item.Id) == null)
+            if (await Exists(item.Id) != null)
             {
                 throw new InvalidOperationException("Perfil já cadastrado");
             }
