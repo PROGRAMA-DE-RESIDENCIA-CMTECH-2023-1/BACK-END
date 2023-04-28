@@ -35,6 +35,11 @@ namespace cmtech_backend.Services.Implementations
             return await _groupRepository.FindAll();
         }
 
+        public async Task<Group?> FindByName(string name)
+        {
+            return await _groupRepository.FindByName(name);
+        }
+
         public async Task<Group> Update(GroupDto updateGroup)
         {
             Group group = _converter.Parse(updateGroup);

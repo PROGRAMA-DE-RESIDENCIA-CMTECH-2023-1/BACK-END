@@ -1,5 +1,6 @@
 ﻿using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
+using System.Collections.Generic;
 
 namespace cmtech_backend.Repositories.Implementations
 {
@@ -25,7 +26,7 @@ namespace cmtech_backend.Repositories.Implementations
                 throw new InvalidOperationException("Perfil já cadastrado");
             }
             await _dbSet.AddAsync(item);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return item;
         }
 
@@ -37,7 +38,7 @@ namespace cmtech_backend.Repositories.Implementations
                 throw new InvalidOperationException("Perfil não encontrado");
             }
             _dbSet.Entry(oldItem).CurrentValues.SetValues(item);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return item;
         }
         
@@ -49,13 +50,24 @@ namespace cmtech_backend.Repositories.Implementations
                 throw new InvalidOperationException("Perfil não encontrado");
             }
             _dbSet.Remove(item);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return await FindAll();
         }
 
         public async Task<T?> Exists(int id)
         {
             return await _dbSet.FindAsync(id);
+        }
+
+        public async Task<T?> FindByName(string name)
+        {
+            var items = await FindAll();
+            foreach(var t in items)
+            {
+                if (typeof(T).GetProperty("Name").GetValue(t).Equals(name))
+                    return t;
+            }
+            return null;
         }
     }
 }

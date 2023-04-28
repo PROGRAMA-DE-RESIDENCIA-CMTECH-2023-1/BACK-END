@@ -22,6 +22,12 @@ namespace cmtech_backend.Controllers
             return await _groupService.FindAll();
         }
 
+        [HttpGet("/{name}")]
+        public async Task<Group?> FindByName([FromRoute]string name)
+        {
+            return await _groupService.FindByName(name);
+        }
+
         [HttpPost]
         public async Task<Group> Create(GroupDto createGroup)
         {

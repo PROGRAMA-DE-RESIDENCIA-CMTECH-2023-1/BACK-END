@@ -15,6 +15,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryImpl<>));
 builder.Services.AddScoped<IProfileService, ProfileServiceImpl>();
 builder.Services.AddScoped<IGroupService, GroupServiceImpl>();
 builder.Services.AddScoped<ISegmentService, SegmentServiceImpl>();
+builder.Services.AddScoped<IOrgService, OrgServiceImpl>();
 
 builder.Services.AddCors();
 

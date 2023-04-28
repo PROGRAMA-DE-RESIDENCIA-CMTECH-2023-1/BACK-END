@@ -12,5 +12,7 @@ namespace cmtech_backend.Services.Interfaces
         public Task<Group> Update(GroupDto updateGroup);
 
         public Task<List<Group>> Delete(int id);
+
+        public Task<Group?> FindByName(string name);
     }
 }
