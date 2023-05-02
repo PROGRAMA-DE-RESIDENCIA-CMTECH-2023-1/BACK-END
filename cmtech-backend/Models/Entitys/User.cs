@@ -18,7 +18,7 @@ namespace cmtech_backend.Models.Entitys
         public string DateRegister { get; set; }
 
         [Column("perfil_id")]
-        public int Perfil_id { get; set; }
+        public int Profile_id { get; set; }
 
         public virtual Profile Profile { get; set; }
 

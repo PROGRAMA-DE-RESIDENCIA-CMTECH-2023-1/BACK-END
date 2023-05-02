@@ -1184,19 +1184,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\bituc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\backend-cmtech\\cmtech-backend\\cmtech-backend.csproj",
+      "projectUniqueName": "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\cmtech-backend.csproj",
       "projectName": "cmtech-backend",
-      "projectPath": "C:\\Users\\user\\Desktop\\backend-cmtech\\cmtech-backend\\cmtech-backend.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\backend-cmtech\\cmtech-backend\\obj\\",
+      "projectPath": "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\cmtech-backend.csproj",
+      "packagesPath": "C:\\Users\\bituc\\.nuget\\packages\\",
+      "outputPath": "E:\\Programs\\Residencia-CMTECH\\BACK-END\\cmtech-backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bituc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1254,7 +1254,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

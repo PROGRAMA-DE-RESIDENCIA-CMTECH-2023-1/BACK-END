@@ -68,8 +68,8 @@ namespace cmtech_backend.Services.Implementations
                 profile = new() { Id = 0, Name = user.Profile };
             }
             User newUser = _userConverter.Parse(user);
-            user.Org = org;
-            user.Profile = profile;
+            newUser.Org = org;
+            newUser.Profile = profile;
             return newUser;
         }
 

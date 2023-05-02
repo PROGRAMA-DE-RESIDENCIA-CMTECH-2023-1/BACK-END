@@ -35,7 +35,7 @@ namespace cmtech_backend.Data.Context
 
             modelBuilder.Entity<Org>()
                 .HasMany(org => org.Users)
-                .WithOne(o => o.Orgs)
+                .WithOne(o => o.Org)
                 .HasForeignKey(o => o.Org_id);
         }
     }
