@@ -8,12 +8,70 @@ namespace cmtech_backend.Services.Implementations
 {
     public class UserServiceImpl : IUserService
     {
+        private readonly IRepository<User> _userRepository;
+
         private readonly IRepository<Org> _orgRepository;
 
-        private readonly IRepository<Segment> _segmentRepository;
+        private readonly IRepository<Profile> _profileRepository;
 
-        private readonly IRepository<Group> _groupRepository;
+        private readonly UserConverter _userConverter;
 
-        private readonly OrgConverter _orgConverter;
+        public UserServiceImpl(IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository)
+        {
+            _userRepository = userRepository;
+            _orgRepository = orgRepository;
+            _profileRepository = profileRepository;
+            _userConverter = new UserConverter();
+        }
+        public async Task<User> Create(UserDto user)
+        {
+            User newUser = await NewUser(user);
+            return await _userRepository.Create(newUser);
+        }
+
+        public async Task<List<User>> Delete(int userId)
+        {
+            return await _userRepository.Delete(userId);
+        }
+
+        public async Task<List<User>> FindAll()
+        {
+            return await _userRepository.FindAll();
+        }
+
+        public async Task<User> Update(UserDto user)
+        {
+            User newUser = await NewUser(user);
+            return await _userRepository.Update(newUser);
+        }
+
+        private async Task<User> NewUser(UserDto user)
+        {
+
+            Org? org = await _orgRepository.FindByName(user.Org);
+            if (org != null)
+            {
+                user.OrgId = org.Id;
+            }
+            else
+            {
+                org = new() { Id = 0, Name = user.Org };
+            }
+
+            Profile? profile = await _profileRepository.FindByName(user.Profile);
+            if (profile != null)
+            {
+                user.ProfileId = profile.Id;
+            }
+            else
+            {
+                profile = new() { Id = 0, Name = user.Profile };
+            }
+            User newUser = _userConverter.Parse(user);
+            user.Org = org;
+            user.Profile = profile;
+            return newUser;
+        }
+
     }
 }
