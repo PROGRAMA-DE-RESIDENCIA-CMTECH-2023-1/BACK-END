@@ -24,10 +24,11 @@ namespace cmtech_backend.Services.Implementations
             _orgConverter = new OrgConverter();
         }
 
-        public async Task<Org> Create(OrgDto org)
+        public async Task<OrgDto> Create(OrgDto orgDto)
         {
-            Org newOrg = await NewOrg(org);
-            return await _orgRepository.Create(newOrg);
+            Org newOrg = await NewOrg(orgDto);
+            Org org = await _orgRepository.Create(newOrg);
+            return _orgConverter.Parse(org);
         }
 
         public async Task<List<Org>> Delete(int orgId)
@@ -35,15 +36,26 @@ namespace cmtech_backend.Services.Implementations
             return await _orgRepository.Delete(orgId);
         }
 
-        public async Task<List<Org>> FindAll()
+        public async Task<List<OrgDto>> FindAll()
         {
-            return await _orgRepository.FindAll();
+            List<Org> orgs =  await _orgRepository.FindAll();
+            List<OrgDto> orgsDto = _orgConverter.Parse(orgs);
+            orgsDto.ForEach(o => o.Segment = _segmentRepository.FindById(o.SegmentId).Result.Name);
+            orgsDto.ForEach(o => o.Group = _segmentRepository.FindById(o.GroupId).Result.Name);
+            return orgsDto;
         }
 
-        public async Task<Org> Update(OrgDto org)
+        public async Task<Org> FindById(int id)
         {
-            Org newOrg = await NewOrg(org);
-            return await _orgRepository.Update(newOrg);
+            Org? org = await _orgRepository.FindById(id);
+            return org ?? throw new HttpRequestException("Organização não encontrada");
+        }
+
+        public async Task<OrgDto> Update(OrgDto orgDto)
+        {
+            Org newOrg = await NewOrg(orgDto);
+            Org org = await _orgRepository.Update(newOrg);
+            return _orgConverter.Parse(org);
         }
 
         private async Task<Org> NewOrg(OrgDto org)

@@ -19,6 +19,11 @@ namespace cmtech_backend.Repositories.Implementations
             return await _dbSet.ToListAsync();
         }
 
+        public async Task<T?> FindById(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
         public async Task<T> Create(T item)
         {
             if (await Exists(item.Id) != null)

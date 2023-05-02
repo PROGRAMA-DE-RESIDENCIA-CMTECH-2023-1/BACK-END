@@ -16,6 +16,8 @@ builder.Services.AddScoped<IProfileService, ProfileServiceImpl>();
 builder.Services.AddScoped<IGroupService, GroupServiceImpl>();
 builder.Services.AddScoped<ISegmentService, SegmentServiceImpl>();
 builder.Services.AddScoped<IOrgService, OrgServiceImpl>();
+builder.Services.AddScoped<IUserService, UserServiceImpl>();
+builder.Services.AddScoped<IDepartmentService, DepartmentServiceImpl>();
 
 builder.Services.AddCors();
 

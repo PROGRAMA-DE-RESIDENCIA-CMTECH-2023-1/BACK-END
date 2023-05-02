@@ -17,19 +17,19 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Org>> FindAll()
+        public async Task<List<OrgDto>> FindAll()
         {
             return await _orgService.FindAll();
         }
 
         [HttpPost]
-        public async Task<Org> Create(OrgDto org)
+        public async Task<OrgDto> Create(OrgDto org)
         {
             return await _orgService.Create(org);
         }
 
         [HttpPut]
-        public async Task<Org> Update(OrgDto org)
+        public async Task<OrgDto> Update(OrgDto org)
         {
             return await _orgService.Update(org);
         }

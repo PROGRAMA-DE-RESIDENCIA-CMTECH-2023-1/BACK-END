@@ -30,13 +30,18 @@ namespace cmtech_backend.Data.Context
 
             modelBuilder.Entity<Profile>()
                 .HasMany(p => p.Users)
-                .WithOne(o => o.Profile)
-                .HasForeignKey(o => o.Profile_id);
+                .WithOne(u => u.Profile)
+                .HasForeignKey(u => u.Profile_id);
 
             modelBuilder.Entity<Org>()
                 .HasMany(org => org.Users)
-                .WithOne(o => o.Org)
-                .HasForeignKey(o => o.Org_id);
+                .WithOne(u => u.Org)
+                .HasForeignKey(u => u.Org_id);
+
+            modelBuilder.Entity<Org>()
+                .HasMany(o => o.Departments)
+                .WithOne(d => d.Org)
+                .HasForeignKey(d => d.Org_id);
         }
     }
 }

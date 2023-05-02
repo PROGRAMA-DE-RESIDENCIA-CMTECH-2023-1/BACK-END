@@ -5,11 +5,13 @@ namespace cmtech_backend.Services.Interfaces
 {
     public interface IOrgService
     {
-        public Task<List<Org>> FindAll();
+        public Task<List<OrgDto>> FindAll();
 
-        public Task<Org> Create(OrgDto org);
+        public Task<Org> FindById(int id);
 
-        public Task<Org> Update(OrgDto org);
+        public Task<OrgDto> Create(OrgDto org);
+
+        public Task<OrgDto> Update(OrgDto org);
 
         public Task<List<Org>> Delete(int orgId);
     }

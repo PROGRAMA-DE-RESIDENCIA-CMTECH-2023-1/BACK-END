@@ -6,6 +6,8 @@ namespace cmtech_backend.Repositories.Interfaces
     {
         public Task<List<T>> FindAll();
 
+        public Task<T?> FindById(int id);
+
         public Task<T?> FindByName(string name);
 
         public Task<T> Create(T item);
