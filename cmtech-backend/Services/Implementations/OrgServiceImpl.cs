@@ -28,12 +28,19 @@ namespace cmtech_backend.Services.Implementations
         {
             Org newOrg = await NewOrg(orgDto);
             Org org = await _orgRepository.Create(newOrg);
-            return _orgConverter.Parse(org);
+            OrgDto orgResponse = _orgConverter.Parse(org);
+            orgResponse.Segment = orgDto.Segment;
+            orgResponse.Group = orgDto.Group;
+            return orgResponse;
         }
 
-        public async Task<List<Org>> Delete(int orgId)
+        public async Task<List<OrgDto>> Delete(int orgId)
         {
-            return await _orgRepository.Delete(orgId);
+            List<Org> orgs = await _orgRepository.Delete(orgId);
+            List<OrgDto> orgsDto = _orgConverter.Parse(orgs);
+            orgsDto.ForEach(o => o.Segment = _segmentRepository.FindById(o.SegmentId).Result.Name);
+            orgsDto.ForEach(o => o.Group = _segmentRepository.FindById(o.GroupId).Result.Name);
+            return orgsDto;
         }
 
         public async Task<List<OrgDto>> FindAll()

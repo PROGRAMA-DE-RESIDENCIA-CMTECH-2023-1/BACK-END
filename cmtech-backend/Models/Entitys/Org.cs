@@ -16,13 +16,13 @@ namespace cmtech_backend.Models.Entitys
         [ForeignKey("segmento")]
         public int Segment_id { get; set; }
 
-        public Segment Segment { get; set; }
+        public virtual Segment Segment { get; set; }
 
         [Column("grupo_id")]
         [ForeignKey("grupo")]
         public int Group_id { get; set; }
 
-        public Group Group { get; set; }
+        public virtual Group Group { get; set; }
 
         [JsonIgnore]
         public List<User> Users { get; set; }

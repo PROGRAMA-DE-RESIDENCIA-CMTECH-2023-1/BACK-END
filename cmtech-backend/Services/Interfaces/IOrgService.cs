@@ -13,6 +13,6 @@ namespace cmtech_backend.Services.Interfaces
 
         public Task<OrgDto> Update(OrgDto org);
 
-        public Task<List<Org>> Delete(int orgId);
+        public Task<List<OrgDto>> Delete(int orgId);
     }
 }

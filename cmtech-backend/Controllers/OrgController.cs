@@ -35,7 +35,7 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpDelete]
-        public async Task<List<Org>> Delete(int id)
+        public async Task<List<OrgDto>> Delete(int id)
         {
             return await _orgService.Delete(id);
         }

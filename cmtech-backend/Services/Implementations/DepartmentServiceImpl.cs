@@ -26,7 +26,7 @@ namespace cmtech_backend.Services.Implementations
             List<Department> departments =  await _departmentRepository.FindAll();
             List<DepartmentDto> departmentsDto = _departmentConverter.Parse(departments);
             departmentsDto.ForEach(d => d.Org = _orgRepository.FindById(d.Org_id).Result.Name);
-            return _departmentConverter.Parse(departments);
+            return departmentsDto;
         }
 
         public async Task<DepartmentDto> Create(DepartmentDto departmentDto)
