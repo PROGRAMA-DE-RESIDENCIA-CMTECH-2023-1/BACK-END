@@ -33,10 +33,10 @@ namespace cmtech_backend.Data.Context
                 .WithOne(u => u.Profile)
                 .HasForeignKey(u => u.Profile_id);
 
-            modelBuilder.Entity<Org>()
-                .HasMany(org => org.Users)
-                .WithOne(u => u.Org)
-                .HasForeignKey(u => u.Org_id);
+            modelBuilder.Entity<Department>()
+                .HasMany(d => d.Users)
+                .WithOne(u => u.Department)
+                .HasForeignKey(u => u.Department_id);
 
             modelBuilder.Entity<Org>()
                 .HasMany(o => o.Departments)

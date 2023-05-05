@@ -12,6 +12,10 @@
 
         public string DateRegister { get; set; }
 
+        public string Department { get; set; }
+
+        public int DepartamentId { get; set; }
+
         public string Org { get; set; }
 
         public int OrgId { get; set; }

@@ -17,6 +17,11 @@ namespace cmtech_backend.Models.Entitys
         [Column("data_cadastro")]
         public string DateRegister { get; set; }
 
+        [Column("departamento_id")]
+        public int Department_id { get; set; }
+
+        public virtual Department Department { get; set; }
+
         [Column("perfil_id")]
         public int Profile_id { get; set; }
 
@@ -26,5 +31,6 @@ namespace cmtech_backend.Models.Entitys
         public int Org_id { get; set; }
 
         public virtual Org Org { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace cmtech_backend.Models.Entitys
 {
@@ -12,5 +13,9 @@ namespace cmtech_backend.Models.Entitys
         public int Org_id { get; set; }
 
         public virtual Org Org { get; set; }
+
+        [JsonIgnore]
+        public List<User> Users { get; set; }
     }
+
 }

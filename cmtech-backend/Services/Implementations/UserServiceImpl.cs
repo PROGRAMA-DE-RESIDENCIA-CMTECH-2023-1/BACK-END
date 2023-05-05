@@ -14,14 +14,17 @@ namespace cmtech_backend.Services.Implementations
 
         private readonly IRepository<Profile> _profileRepository;
 
+        private readonly IRepository<Department> _departmentRepository;
+
         private readonly UserConverter _userConverter;
 
-        public UserServiceImpl(IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository)
+        public UserServiceImpl(IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository, IRepository<Department> departmentRepository)
         {
             _userRepository = userRepository;
             _orgRepository = orgRepository;
             _profileRepository = profileRepository;
             _userConverter = new UserConverter();
+            _departmentRepository = departmentRepository;
         }
         public async Task<User> Create(UserDto user)
         {
@@ -67,9 +70,21 @@ namespace cmtech_backend.Services.Implementations
             {
                 profile = new() { Id = 0, Name = user.Profile };
             }
+
+            Department? department = await _departmentRepository.FindByName(user.Department);
+            if (department != null)
+            {
+                user.DepartamentId = department.Id;
+            }
+            else
+            {
+                department = new() { Id = 0, Name = user.Department };
+            }
+
             User newUser = _userConverter.Parse(user);
             newUser.Org = org;
             newUser.Profile = profile;
+            newUser.Department = department;
             return newUser;
         }
 

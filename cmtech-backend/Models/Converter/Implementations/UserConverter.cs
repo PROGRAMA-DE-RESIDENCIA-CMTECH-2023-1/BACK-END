@@ -17,6 +17,7 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Org_id = parser.OrgId,
                 Password = parser.Password,
                 Profile_id = parser.ProfileId,
+                Departament_id = parser.DepartamentId,
                 DateRegister = DateTime.Now.ToString(),
             };
         }
@@ -40,7 +41,9 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Password = parser.Password,
                 DateRegister = parser.DateRegister,
                 Profile = parser.Profile.Name,
-                ProfileId = parser.Profile_id
+                ProfileId = parser.Profile_id,
+                Department = parser.Department.Name,
+                DepartamentId = parser.Department_id,
             };
         }
 
