@@ -10,15 +10,15 @@
 
         public string Password { get; set; }
 
-        public string DateRegister { get; set; }
+        public DateTime DateRegister { get; set; }
 
-        public string Department { get; set; }
+        public string? Department { get; set; }
 
-        public int DepartamentId { get; set; }
+        public int? DepartamentId { get; set; }
 
-        public string Org { get; set; }
+        public string? Org { get; set; }
 
-        public int OrgId { get; set; }
+        public int? OrgId { get; set; }
 
         public string Profile { get; set; }
 

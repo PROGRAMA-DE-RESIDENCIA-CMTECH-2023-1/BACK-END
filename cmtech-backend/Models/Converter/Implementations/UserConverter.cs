@@ -14,11 +14,10 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Id = parser.Id,
                 Name = parser.Name,
                 Email = parser.Email,
-                Org_id = parser.OrgId,
                 Password = parser.Password,
                 Profile_id = parser.ProfileId,
-                Departament_id = parser.DepartamentId,
-                DateRegister = DateTime.Now.ToString(),
+                Department_id = parser.DepartamentId,
+                DateRegister = DateTime.UtcNow
             };
         }
 

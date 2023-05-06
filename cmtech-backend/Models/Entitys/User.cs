@@ -15,22 +15,21 @@ namespace cmtech_backend.Models.Entitys
         public string Password { get; set; }
 
         [Column("data_cadastro")]
-        public string DateRegister { get; set; }
+        public DateTime DateRegister { get; set; }
 
         [Column("departamento_id")]
-        public int Department_id { get; set; }
+        public int? Department_id { get; set; }
 
-        public virtual Department Department { get; set; }
+        public virtual Department? Department { get; set; }
+
+        [Column("organizacao_id")]
+        public int? Org_id { get; set; }
+
+        public virtual Org? Org { get; set; }
 
         [Column("perfil_id")]
         public int Profile_id { get; set; }
 
         public virtual Profile Profile { get; set; }
-
-        [Column("organizacao_id")]
-        public int Org_id { get; set; }
-
-        public virtual Org Org { get; set; }
-
     }
 }
