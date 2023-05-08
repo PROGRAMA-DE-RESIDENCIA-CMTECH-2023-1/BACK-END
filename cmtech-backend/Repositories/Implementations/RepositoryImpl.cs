@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models.Entitys;
+﻿using cmtech_backend.Exceptions;
+using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 using System.Collections.Generic;
 
@@ -22,14 +23,14 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<T> FindById(int id)
         {
             T? item = await _dbSet.FindAsync(id);
-            return item ?? throw new InvalidOperationException("Item não encontrado");
+            return item ?? throw new NotFoundException(typeof(T).Name + " não encontrado");
         }
 
         public async Task<T> Create(T item)
         {
             if (await FindById(item.Id) != null)
             {
-                throw new InvalidOperationException("Perfil já cadastrado");
+                throw new NotFoundException(typeof(T) + " já cadastrado");
             }
             await _dbSet.AddAsync(item);
             await _context.SaveChangesAsync();

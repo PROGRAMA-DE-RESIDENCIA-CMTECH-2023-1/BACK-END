@@ -3,7 +3,7 @@ using cmtech_backend.Repositories.Interfaces;
 
 namespace cmtech_backend.Repositories.Implementations
 {
-    public class UserRepositoryImpl : IUserRepository
+    public class UserRepositoryImpl : IRepository<User>
     {
 
         private readonly DataContext _dbContext;
@@ -42,7 +42,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<List<User>> FindAll()
         {
-            return await _users.Include(u => u.Department).Include(u => u.Org).ToListAsync();
+            return await _users.Include(u => u.Department).Include(u => u.Org).Include(u => u.Profile).ToListAsync();
         }
 
         public async Task<User?> FindByName(string name)
