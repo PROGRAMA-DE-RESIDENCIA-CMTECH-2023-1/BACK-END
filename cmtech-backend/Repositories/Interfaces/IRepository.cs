@@ -6,7 +6,7 @@ namespace cmtech_backend.Repositories.Interfaces
     {
         public Task<List<T>> FindAll();
 
-        public Task<T?> FindById(int id);
+        public Task<T> FindById(int id);
 
         public Task<T?> FindByName(string name);
 
@@ -15,7 +15,5 @@ namespace cmtech_backend.Repositories.Interfaces
         public Task<T> Update(T item);
 
         public Task<List<T>> Delete(int id);
-
-        public Task<T?> Exists(int id);
     }
 }

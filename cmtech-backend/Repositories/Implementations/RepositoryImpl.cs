@@ -19,14 +19,15 @@ namespace cmtech_backend.Repositories.Implementations
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T?> FindById(int id)
+        public async Task<T> FindById(int id)
         {
-            return await _dbSet.FindAsync(id);
+            T? item = await _dbSet.FindAsync(id);
+            return item ?? throw new InvalidOperationException("Item não encontrado");
         }
 
         public async Task<T> Create(T item)
         {
-            if (await Exists(item.Id) != null)
+            if (await FindById(item.Id) != null)
             {
                 throw new InvalidOperationException("Perfil já cadastrado");
             }
@@ -37,11 +38,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<T> Update(T item)
         {
-            T? oldItem = await Exists(item.Id);
-            if (oldItem == null)
-            {
-                throw new InvalidOperationException("Perfil não encontrado");
-            }
+            T oldItem = await FindById(item.Id);
             _dbSet.Entry(oldItem).CurrentValues.SetValues(item);
             await _context.SaveChangesAsync();
             return item;
@@ -49,19 +46,10 @@ namespace cmtech_backend.Repositories.Implementations
         
         public async Task<List<T>> Delete(int id)
         {
-            T? item = await Exists(id);
-            if (item == null)
-            {
-                throw new InvalidOperationException("Perfil não encontrado");
-            }
+            T item = await FindById(id);
             _dbSet.Remove(item);
             await _context.SaveChangesAsync();
             return await FindAll();
-        }
-
-        public async Task<T?> Exists(int id)
-        {
-            return await _dbSet.FindAsync(id);
         }
 
         public async Task<T?> FindByName(string name)

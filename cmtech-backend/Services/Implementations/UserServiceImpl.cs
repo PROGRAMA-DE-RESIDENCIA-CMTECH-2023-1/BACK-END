@@ -8,7 +8,7 @@ namespace cmtech_backend.Services.Implementations
 {
     public class UserServiceImpl : IUserService
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IUserRepository _userRepository;
 
         private readonly IRepository<Org> _orgRepository;
 
@@ -18,7 +18,7 @@ namespace cmtech_backend.Services.Implementations
 
         private readonly UserConverter _userConverter;
 
-        public UserServiceImpl(IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository, IRepository<Department> departmentRepository)
+        public UserServiceImpl(IUserRepository userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository, IRepository<Department> departmentRepository)
         {
             _userRepository = userRepository;
             _orgRepository = orgRepository;

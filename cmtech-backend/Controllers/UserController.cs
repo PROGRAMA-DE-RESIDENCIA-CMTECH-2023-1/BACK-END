@@ -17,27 +17,27 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpGet]
-        public async Task<List<User>> FindAll()
+        public async Task<IActionResult> FindAll()
         {
-            return await _userService.FindAll();
+            return Ok(await _userService.FindAll());
         }
 
         [HttpPost]
-        public async Task<User> Create(UserDto createUser)
+        public async Task<IActionResult> Create(UserDto createUser)
         {
-            return await _userService.Create(createUser);
+            return Ok(await _userService.Create(createUser));
         }
 
         [HttpPut]
-        public async Task<User> Update(UserDto updateUser)
+        public async Task<IActionResult> Update(UserDto updateUser)
         {
-            return await _userService.Update(updateUser);
+            return Ok(await _userService.Update(updateUser));
         }
 
         [HttpDelete]
-        public async Task<List<User>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return await _userService.Delete(id);
+            return Ok(await _userService.Delete(id));
         }
     }
 }
