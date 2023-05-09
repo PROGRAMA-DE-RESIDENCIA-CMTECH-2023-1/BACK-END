@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models.Entitys;
+﻿using cmtech_backend.Exceptions;
+using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 
 namespace cmtech_backend.Repositories.Implementations
@@ -37,7 +38,7 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<User> FindById(int id)
         {
             User? user = await _users.FindAsync(id);
-            return user ?? throw new Exception("Usuário não encontrado");
+            return user ?? throw new NotFoundException("Usuário não encontrado");
         }
 
         public async Task<List<User>> FindAll()

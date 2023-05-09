@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models.Dtos;
+﻿using cmtech_backend.Exceptions;
+using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -31,13 +32,30 @@ namespace cmtech_backend.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(UserDto updateUser)
         {
-            return Ok(await _userService.Update(updateUser));
+            try
+            {
+                return Ok(await _userService.Update(updateUser));
+            } catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            } catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _userService.Delete(id));
+            try
+            {
+                return Ok(await _userService.Delete(id));
+            } catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+            
         }
     }
 }
