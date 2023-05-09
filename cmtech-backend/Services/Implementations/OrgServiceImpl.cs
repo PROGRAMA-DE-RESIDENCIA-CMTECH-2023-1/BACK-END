@@ -29,8 +29,6 @@ namespace cmtech_backend.Services.Implementations
             Org newOrg = await NewOrg(orgDto);
             Org org = await _orgRepository.Create(newOrg);
             OrgDto orgResponse = _orgConverter.Parse(org);
-            orgResponse.Segment = orgDto.Segment;
-            orgResponse.Group = orgDto.Group;
             return orgResponse;
         }
 
@@ -38,8 +36,6 @@ namespace cmtech_backend.Services.Implementations
         {
             List<Org> orgs = await _orgRepository.Delete(orgId);
             List<OrgDto> orgsDto = _orgConverter.Parse(orgs);
-            orgsDto.ForEach(o => o.Segment = _segmentRepository.FindById(o.SegmentId).Result.Name);
-            orgsDto.ForEach(o => o.Group = _segmentRepository.FindById(o.GroupId).Result.Name);
             return orgsDto;
         }
 
@@ -47,8 +43,6 @@ namespace cmtech_backend.Services.Implementations
         {
             List<Org> orgs =  await _orgRepository.FindAll();
             List<OrgDto> orgsDto = _orgConverter.Parse(orgs);
-            orgsDto.ForEach(o => o.Segment = _segmentRepository.FindById(o.SegmentId).Result.Name);
-            orgsDto.ForEach(o => o.Group = _segmentRepository.FindById(o.GroupId).Result.Name);
             return orgsDto;
         }
 
@@ -67,26 +61,10 @@ namespace cmtech_backend.Services.Implementations
 
         private async Task<Org> NewOrg(OrgDto org)
         {
+            Segment segment = await _segmentRepository.FindById(org.SegmentId);
 
-            Segment? segment = await _segmentRepository.FindByName(org.Segment);
-            if (segment != null)
-            {
-                org.SegmentId = segment.Id;
-            }
-            else
-            {
-                segment = new() { Id = 0, Name = org.Segment };
-            }
+            Group group = await _groupRepository.FindById(org.GroupId);
 
-            Group? group = await _groupRepository.FindByName(org.Group);
-            if (group != null)
-            {
-                org.GroupId = group.Id;
-            }
-            else
-            {
-                group = new() { Id = 0, Name = org.Group };
-            }
             Org newOrg = _orgConverter.Parse(org);
             newOrg.Segment = segment;
             newOrg.Group = group;

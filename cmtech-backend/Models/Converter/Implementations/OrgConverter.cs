@@ -34,7 +34,9 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Name = parser.Name,
                 Phone = parser.Phone,
                 SegmentId = parser.Segment_id,
+                Segment = parser.Segment.Name,
                 GroupId = parser.Group_id,
+                Group = parser.Group.Name
             };
         }
 

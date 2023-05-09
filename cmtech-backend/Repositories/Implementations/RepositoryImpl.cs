@@ -20,8 +20,9 @@ namespace cmtech_backend.Repositories.Implementations
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T> FindById(int id)
+        public async Task<T?> FindById(int? id)
         {
+            if (id == null) return null;
             T? item = await _dbSet.FindAsync(id);
             return item ?? throw new NotFoundException(typeof(T).Name + " não encontrado");
         }

@@ -35,8 +35,9 @@ namespace cmtech_backend.Repositories.Implementations
             return await FindAll();
         }
 
-        public async Task<User> FindById(int id)
+        public async Task<User?> FindById(int? id)
         {
+            if (id == null) return null;
             User? user = await _users.FindAsync(id);
             return user ?? throw new NotFoundException("Usuário não encontrado");
         }

@@ -13,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IRepository<User>, UserRepositoryImpl>();
+builder.Services.AddScoped<IRepository<Org>, OrgRepositoryImpl>();
+builder.Services.AddScoped<IRepository<Department>, DepartmentRepositoryImpl>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryImpl<>));
 builder.Services.AddScoped<IProfileService, ProfileServiceImpl>();
 builder.Services.AddScoped<IGroupService, GroupServiceImpl>();

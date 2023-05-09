@@ -50,36 +50,11 @@ namespace cmtech_backend.Services.Implementations
 
         private async Task<User> NewUser(UserDto user)
         {
+            Org org = await _orgRepository.FindById(user.OrgId);
 
-            Org? org = await _orgRepository.FindByName(user.Org);
-            if (org != null)
-            {
-                user.OrgId = org.Id;
-            }
-            else
-            {
-                org = new() { Id = 0, Name = user.Org };
-            }
+            Profile profile = await _profileRepository.FindById(user.ProfileId);
 
-            Profile? profile = await _profileRepository.FindByName(user.Profile);
-            if (profile != null)
-            {
-                user.ProfileId = profile.Id;
-            }
-            else
-            {
-                profile = new() { Id = 0, Name = user.Profile };
-            }
-
-            Department? department = await _departmentRepository.FindByName(user.Department);
-            if (department != null)
-            {
-                user.DepartamentId = department.Id;
-            }
-            else
-            {
-                department = new() { Id = 0, Name = user.Department };
-            }
+            Department department = await _departmentRepository.FindById(user.DepartamentId);
 
             User newUser = _userConverter.Parse(user);
             newUser.Org = org;
@@ -87,6 +62,5 @@ namespace cmtech_backend.Services.Implementations
             newUser.Department = department;
             return newUser;
         }
-
     }
 }

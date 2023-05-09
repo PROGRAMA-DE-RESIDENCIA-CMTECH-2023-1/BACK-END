@@ -25,13 +25,12 @@ namespace cmtech_backend.Services.Implementations
         {
             List<Department> departments =  await _departmentRepository.FindAll();
             List<DepartmentDto> departmentsDto = _departmentConverter.Parse(departments);
-            departmentsDto.ForEach(d => d.Org = _orgRepository.FindById(d.Org_id).Result.Name);
             return departmentsDto;
         }
 
         public async Task<DepartmentDto> Create(DepartmentDto departmentDto)
         {
-            Org org = await _orgRepository.FindByName(departmentDto.Org);
+            Org org = await _orgRepository.FindById(departmentDto.Org_id);
             Department department = _departmentConverter.Parse(departmentDto);
             department.Org = org;
             Department newDepartment = await _departmentRepository.Create(department);
@@ -40,7 +39,7 @@ namespace cmtech_backend.Services.Implementations
 
         public async Task<DepartmentDto> Update(DepartmentDto departmentDto)
         {
-            Org org = await _orgRepository.FindByName(departmentDto.Org);
+            Org org = await _orgRepository.FindById(departmentDto.Org_id);
             Department department = _departmentConverter.Parse(departmentDto);
             department.Org = org;
             Department newDepartment = await _departmentRepository.Update(department);
