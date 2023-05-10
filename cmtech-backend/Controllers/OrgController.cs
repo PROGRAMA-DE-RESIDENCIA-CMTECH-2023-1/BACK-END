@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models.Dtos;
+﻿using cmtech_backend.Exceptions;
+using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -17,27 +18,47 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpGet]
-        public async Task<List<OrgDto>> FindAll()
+        public async Task<IActionResult> FindAll()
         {
-            return await _orgService.FindAll();
+            return Ok(await _orgService.FindAll());
         }
 
         [HttpPost]
-        public async Task<OrgDto> Create(OrgDto org)
+        public async Task<IActionResult> Create(OrgDto createOrg)
         {
-            return await _orgService.Create(org);
+            return Ok(await _orgService.Create(createOrg));
         }
 
         [HttpPut]
-        public async Task<OrgDto> Update(OrgDto org)
+        public async Task<IActionResult> Update(OrgDto updateOrg)
         {
-            return await _orgService.Update(org);
+            try
+            {
+                return Ok(await _orgService.Update(updateOrg));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
 
         [HttpDelete]
-        public async Task<List<OrgDto>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return await _orgService.Delete(id);
+            try
+            {
+                return Ok(await _orgService.Delete(id));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+
         }
     }
 }

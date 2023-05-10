@@ -1,4 +1,6 @@
-﻿using cmtech_backend.Models.Dtos;
+﻿using cmtech_backend.Exceptions;
+using cmtech_backend.Models.Dtos;
+using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +8,7 @@ namespace cmtech_backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DepartmentController: ControllerBase
+    public class DepartmentController : ControllerBase
     {
         private readonly IDepartmentService _departmentService;
 
@@ -22,21 +24,41 @@ namespace cmtech_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(DepartmentDto departmentDto)
+        public async Task<IActionResult> Create(DepartmentDto createDepartment)
         {
-            return Ok(await _departmentService.Create(departmentDto));
+            return Ok(await _departmentService.Create(createDepartment));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(DepartmentDto departmentDto)
+        public async Task<IActionResult> Update(DepartmentDto updateDepartment)
         {
-            return Ok(await _departmentService.Update(departmentDto));
+            try
+            {
+                return Ok(await _departmentService.Update(updateDepartment));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _departmentService.Delete(id));
+            try
+            {
+                return Ok(await _departmentService.Delete(id));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+
         }
     }
 }

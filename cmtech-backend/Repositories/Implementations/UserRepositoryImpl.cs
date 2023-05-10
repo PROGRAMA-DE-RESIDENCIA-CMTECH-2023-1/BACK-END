@@ -20,7 +20,7 @@ namespace cmtech_backend.Repositories.Implementations
         {
             if (await _users.AnyAsync(u => u.Id == user.Id))
             {
-                throw new InvalidOperationException("Usuário já cadastrado");
+                throw new InvalidOperationException("Usuário já cadastrado"); 
             }
             await _users.AddAsync(user);
             await _dbContext.SaveChangesAsync();

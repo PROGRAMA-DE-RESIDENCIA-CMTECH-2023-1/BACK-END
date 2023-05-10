@@ -27,7 +27,7 @@ namespace cmtech_backend.Repositories.Implementations
             return org;
         }
 
-        public async Task<List<Org>> Delete(int id)
+        public async Task<List<Org>> Delete(int id) 
         {
             Org org = await FindById(id);
             _orgs.Remove(org);

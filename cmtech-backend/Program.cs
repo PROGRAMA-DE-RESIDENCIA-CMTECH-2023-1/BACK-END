@@ -5,7 +5,7 @@ using cmtech_backend.Repositories.Implementations;
 using cmtech_backend.Repositories.Interfaces;
 using cmtech_backend.Services.Implementations;
 using cmtech_backend.Services.Interfaces;
-
+ 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

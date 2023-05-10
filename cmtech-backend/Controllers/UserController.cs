@@ -5,7 +5,7 @@ using cmtech_backend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cmtech_backend.Controllers
-{
+{ 
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
