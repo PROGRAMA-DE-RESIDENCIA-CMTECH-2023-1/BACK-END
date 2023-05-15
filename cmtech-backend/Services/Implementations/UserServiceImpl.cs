@@ -3,6 +3,7 @@ using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
 using cmtech_backend.Services.Interfaces;
+using System;
 
 namespace cmtech_backend.Services.Implementations
 {
@@ -26,10 +27,10 @@ namespace cmtech_backend.Services.Implementations
             _userConverter = new UserConverter();
             _departmentRepository = departmentRepository;
         }
-        public async Task<User> Create(UserDto user)
+        public async Task<UserDto> Create(UserDto user)
         {
             User newUser = await NewUser(user);
-            return await _userRepository.Create(newUser);
+            return _userConverter.Parse(await _userRepository.Create(newUser));
         }
 
         public async Task<List<User>> Delete(int userId)

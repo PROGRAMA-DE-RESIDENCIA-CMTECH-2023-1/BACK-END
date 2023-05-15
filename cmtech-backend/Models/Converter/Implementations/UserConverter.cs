@@ -1,6 +1,8 @@
 ﻿using cmtech_backend.Models.Converter.Interfaces;
 using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
+using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace cmtech_backend.Models.Converter.Implementations
 {
@@ -14,7 +16,7 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Id = parser.Id,
                 Name = parser.Name,
                 Email = parser.Email,
-                Password = parser.Password,
+                Password = BCrypt.Net.BCrypt.HashPassword(parser.Password),
                 Profile_id = parser.ProfileId,
                 Department_id = parser.DepartamentId,
                 DateRegister = DateTime.UtcNow
@@ -37,7 +39,6 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Email = parser.Email,
                 Org = parser.Org.Name,
                 OrgId = parser.Org_id,
-                Password = parser.Password,
                 DateRegister = parser.DateRegister,
                 Profile = parser.Profile.Name,
                 ProfileId = parser.Profile_id,
