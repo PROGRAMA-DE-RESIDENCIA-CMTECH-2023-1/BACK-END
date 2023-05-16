@@ -4,6 +4,6 @@ namespace cmtech_backend.Services.Interfaces
 {
     public interface ILoginService
     {
-        public Task<bool> Login(LoginDto loginDto);
+        public Task<string> Login(LoginDto loginDto);
     }
 }

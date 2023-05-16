@@ -49,7 +49,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<User?> FindByName(string name)
         {
-            return await _users.FirstAsync(u => u.Name == name);
+            return await _users.Include(u => u.Department).Include(u => u.Org).Include(u => u.Profile).FirstAsync(u => u.Email == name);
         }
 
         public async Task<User> Update(User user)

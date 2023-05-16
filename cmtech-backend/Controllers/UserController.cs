@@ -27,11 +27,12 @@ namespace cmtech_backend.Controllers
         public async Task<IActionResult> Create(UserDto createUser)
         {
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random random = new Random();
+            Random random = new();
             string randomPassword = new(Enumerable.Repeat(chars, 8).Select(s => s[random.Next(s.Length)]).ToArray());
             createUser.Password = randomPassword;
-
-            return Ok(await _userService.Create(createUser) + randomPassword);
+            UserDto user = await _userService.Create(createUser);
+            user.Password = randomPassword;
+            return Ok(user);
         }
 
         [HttpPut]
