@@ -43,3 +43,7 @@ E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Microsoft
 E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Scrutor.dll
+E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
+E:\Programs\Residencia-CMTECH\BACK-END\cmtech-backend\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
