@@ -38,7 +38,7 @@ namespace cmtech_backend.Services.Implementations
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(JwtRegisteredClaimNames.Jti, user.Id.ToString()),
                 new Claim(ClaimTypes.Role, user.Profile.Name)
             };
 

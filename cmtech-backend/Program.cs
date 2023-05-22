@@ -28,6 +28,7 @@ builder.Services.AddScoped<IOrgService, OrgServiceImpl>();
 builder.Services.AddScoped<IUserService, UserServiceImpl>();
 builder.Services.AddScoped<IDepartmentService, DepartmentServiceImpl>();
 builder.Services.AddScoped<ILoginService, LoginServiceImpl>();
+builder.Services.AddScoped<IValidationService, ValidationServiceImpl>();
 
 builder.Services.AddCors();
 

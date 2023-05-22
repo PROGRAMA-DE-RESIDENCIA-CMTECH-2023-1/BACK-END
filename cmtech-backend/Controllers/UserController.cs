@@ -9,7 +9,6 @@ namespace cmtech_backend.Controllers
 { 
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
