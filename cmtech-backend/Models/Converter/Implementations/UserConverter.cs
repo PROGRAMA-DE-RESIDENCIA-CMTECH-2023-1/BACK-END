@@ -37,12 +37,12 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Id = parser.Id,
                 Name = parser.Name,
                 Email = parser.Email,
-                Org = parser.Org.Name,
+                Org = parser.Org?.Name,
                 OrgId = parser.Org_id,
                 DateRegister = parser.DateRegister,
                 Profile = parser.Profile.Name,
                 ProfileId = parser.Profile_id,
-                Department = parser.Department.Name,
+                Department = parser.Department?.Name,
                 DepartamentId = parser.Department_id,
             };
         }

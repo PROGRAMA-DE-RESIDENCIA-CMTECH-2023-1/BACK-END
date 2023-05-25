@@ -2,7 +2,9 @@
 using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace cmtech_backend.Controllers
 {
@@ -17,19 +19,19 @@ namespace cmtech_backend.Controllers
             _departmentService = departmentService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> FindAll()
         {
             return Ok(await _departmentService.FindAll());
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create(DepartmentDto createDepartment)
         {
             return Ok(await _departmentService.Create(createDepartment));
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Update(DepartmentDto updateDepartment)
         {
             try
@@ -47,7 +49,7 @@ namespace cmtech_backend.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int id)
         {
             try

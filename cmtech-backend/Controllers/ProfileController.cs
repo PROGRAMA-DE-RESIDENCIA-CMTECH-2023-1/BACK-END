@@ -1,8 +1,10 @@
 ﻿using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace cmtech_backend.Controllers
 {
@@ -17,25 +19,25 @@ namespace cmtech_backend.Controllers
             _profileService = profileService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<List<Profile>> FindAll()
         {
             return await _profileService.FindAll();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrador")]
         public async Task<Profile> Create(ProfileDto profile)
         {
             return await _profileService.Create(profile);
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Administrador")]
         public async Task<Profile> Update(ProfileDto profile)
         {
             return await _profileService.Update(profile);
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Administrador")]
         public async Task<List<Profile>> Delete(int id)
         {
             return await _profileService.Delete(id);

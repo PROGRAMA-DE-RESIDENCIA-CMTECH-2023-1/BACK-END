@@ -2,6 +2,7 @@
 using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cmtech_backend.Controllers
@@ -17,19 +18,19 @@ namespace cmtech_backend.Controllers
             _orgService = orgService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> FindAll()
         {
             return Ok(await _orgService.FindAll());
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create(OrgDto createOrg)
         {
             return Ok(await _orgService.Create(createOrg));
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Update(OrgDto updateOrg)
         {
             try
@@ -47,7 +48,7 @@ namespace cmtech_backend.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int id)
         {
             try

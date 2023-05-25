@@ -1,7 +1,9 @@
 ﻿using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace cmtech_backend.Controllers
 {
@@ -16,25 +18,25 @@ namespace cmtech_backend.Controllers
             _groupService = groupService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<List<Group>> FindAll()
         {
             return await _groupService.FindAll();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrador")]
         public async Task<Group> Create(GroupDto createGroup)
         {
             return await _groupService.Create(createGroup);
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Administrador")]
         public async Task<Group> Update(GroupDto updateGroup)
         {
             return await _groupService.Update(updateGroup);
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Administrador")]
         public async Task<List<Group>> Delete(int id)
         {
             return await _groupService.Delete(id);

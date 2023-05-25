@@ -1,7 +1,9 @@
 ﻿using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace cmtech_backend.Controllers
 {
@@ -16,25 +18,25 @@ namespace cmtech_backend.Controllers
             _segmentService = segmentService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<List<Segment>> FindAll()
         {
             return await _segmentService.FindAll();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrador")]
         public async Task<Segment> Create(SegmentDto createSegment)
         {
             return await _segmentService.Create(createSegment);
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Administrador")]
         public async Task<Segment> Update(SegmentDto updateSegment)
         {
             return await _segmentService.Update(updateSegment);
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Administrador")]
         public async Task<List<Segment>> Delete(int id)
         {
             return await _segmentService.Delete(id);

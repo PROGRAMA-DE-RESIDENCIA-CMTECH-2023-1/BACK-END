@@ -38,7 +38,7 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<User?> FindById(int? id)
         {
             if (id == null) return null;
-            User? user = await _users.Include(u => u.Department).Include(u => u.Org).Include(u => u.Profile).FirstOrDefaultAsync(u => u.Id == id);
+            User? user = await _users.Include(u => u.Department).Include(u => u.Org).Include(u => u.Profile).FirstAsync(u => u.Id == id);
             return user ?? throw new NotFoundException("Usuário não encontrado");
         }
 

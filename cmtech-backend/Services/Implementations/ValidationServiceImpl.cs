@@ -1,4 +1,5 @@
-﻿using cmtech_backend.Models.Converter.Implementations;
+﻿using cmtech_backend.Exceptions;
+using cmtech_backend.Models.Converter.Implementations;
 using cmtech_backend.Models.Dtos;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
@@ -40,10 +41,12 @@ namespace cmtech_backend.Services.Implementations
                 tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
                 var jwt = (JwtSecurityToken)validatedToken;
                 var id = int.Parse(jwt.Id);
-                return _converter.Parse(await _userRepository.FindById(id));
+                User user = await _userRepository.FindById(id);
+                //return user;
+                return _converter.Parse(user);
             } catch
             {
-                return null;
+                throw new UnvalidTokenExcpetion("Token inválido");
             }
         }
     }
