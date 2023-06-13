@@ -27,7 +27,7 @@ namespace cmtech_backend.Controllers
         [HttpPost, Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create(UserDto createUser)
         {
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string chars = "abcdefghijklmnropqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             Random random = new();
             string randomPassword = new(Enumerable.Repeat(chars, 8).Select(s => s[random.Next(s.Length)]).ToArray());
             createUser.Password = randomPassword;

@@ -55,7 +55,7 @@ namespace cmtech_backend.Services.Implementations
 
             Profile profile = await _profileRepository.FindById(user.ProfileId);
 
-            Department department = await _departmentRepository.FindById(user.DepartamentId);
+            Department department = await _departmentRepository.FindById(user.DepartmentId);
 
             User newUser = _userConverter.Parse(user);
             newUser.Org = org;

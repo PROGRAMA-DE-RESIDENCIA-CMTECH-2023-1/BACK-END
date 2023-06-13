@@ -30,7 +30,7 @@ namespace cmtech_backend.Services.Implementations
             }
             else
             {
-                return "Usuário ou senha incorretos";
+                throw new Exception("Usuário ou senha incorretos");
             }
         }
 

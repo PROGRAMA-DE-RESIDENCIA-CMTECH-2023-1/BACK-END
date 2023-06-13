@@ -19,8 +19,14 @@ namespace cmtech_backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            string token = await _loginService.Login(loginDto);
-            return Ok(token);
+            try
+            {
+                string token = await _loginService.Login(loginDto);
+                return Ok(token);
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

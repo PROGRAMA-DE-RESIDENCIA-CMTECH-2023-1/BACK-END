@@ -1,5 +1,6 @@
 global using cmtech_backend.Data.Context;
 global using Microsoft.EntityFrameworkCore;
+using cmtech_backend.Hubs;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Implementations;
 using cmtech_backend.Repositories.Interfaces;
@@ -47,6 +48,7 @@ builder.Services.AddSwaggerGen(options =>
 
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -58,6 +60,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -82,5 +86,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>("/chat");
 
 app.Run();

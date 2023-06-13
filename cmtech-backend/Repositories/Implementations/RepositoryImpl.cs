@@ -22,7 +22,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<T?> FindById(int? id)
         {
-            if (id == null) return null;
+            if (id == null || id == 0) return null;
             T? item = await _dbSet.FindAsync(id);
             return item ?? throw new NotFoundException(typeof(T).Name + " não encontrado");
         }
