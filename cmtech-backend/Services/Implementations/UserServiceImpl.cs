@@ -19,7 +19,11 @@ namespace cmtech_backend.Services.Implementations
 
         private readonly UserConverter _userConverter;
 
-        public UserServiceImpl(IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository, IRepository<Department> departmentRepository)
+        public UserServiceImpl(
+            IRepository<User> userRepository,
+            IRepository<Org> orgRepository,
+            IRepository<Profile> profileRepository,
+            IRepository<Department> departmentRepository)
         {
             _userRepository = userRepository;
             _orgRepository = orgRepository;
@@ -30,7 +34,8 @@ namespace cmtech_backend.Services.Implementations
         public async Task<UserDto> Create(UserDto user)
         {
             User newUser = await NewUser(user);
-            return _userConverter.Parse(await _userRepository.Create(newUser));
+            newUser = await _userRepository.Create(newUser);
+            return _userConverter.Parse(newUser);
         }
 
         public async Task<List<User>> Delete(int userId)
@@ -38,9 +43,9 @@ namespace cmtech_backend.Services.Implementations
             return await _userRepository.Delete(userId);
         }
 
-        public async Task<List<User>> FindAll()
+        public async Task<List<UserDto>> FindAll()
         {
-            return await _userRepository.FindAll();
+            return _userConverter.Parse(await _userRepository.FindAll());
         }
 
         public async Task<User> Update(UserDto user)
@@ -51,16 +56,17 @@ namespace cmtech_backend.Services.Implementations
 
         private async Task<User> NewUser(UserDto user)
         {
-            Org org = await _orgRepository.FindById(user.OrgId);
+            Org? org = await _orgRepository.FindById(user.OrgId);
 
-            Profile profile = await _profileRepository.FindById(user.ProfileId);
+            Profile? profile = await _profileRepository.FindById(user.ProfileId);
 
-            Department department = await _departmentRepository.FindById(user.DepartmentId);
+            List<Department?> departments = user.DepartmentsId.Select(dId => _departmentRepository.FindById(dId).Result).ToList();
 
             User newUser = _userConverter.Parse(user);
+
             newUser.Org = org;
             newUser.Profile = profile;
-            newUser.Department = department;
+            newUser.Departments.AddRange(departments);
             return newUser;
         }
     }

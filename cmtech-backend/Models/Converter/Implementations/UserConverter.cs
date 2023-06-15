@@ -18,7 +18,6 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Email = parser.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(parser.Password),
                 Profile_id = parser.ProfileId,
-                Department_id = parser.DepartmentId,
                 DateRegister = DateTime.UtcNow
             };
         }
@@ -41,8 +40,8 @@ namespace cmtech_backend.Models.Converter.Implementations
                 OrgId = parser.Org_id,
                 Profile = parser.Profile.Name,
                 ProfileId = parser.Profile_id,
-                Department = parser.Department?.Name,
-                DepartmentId = parser.Department_id,
+                Departments = parser.Departments.Select(d => d.Name).ToList(),
+                DepartmentsId = parser.Departments.Select(d => d.Id).ToList()
             };
         }
 

@@ -17,10 +17,7 @@ namespace cmtech_backend.Models.Entitys
         [Column("data_cadastro")]
         public DateTime DateRegister { get; set; }
 
-        [Column("departamento_id")]
-        public int? Department_id { get; set; }
-
-        public virtual Department? Department { get; set; }
+        public virtual List<Department> Departments { get; set; } = new();
 
         [Column("organizacao_id")]
         public int? Org_id { get; set; }

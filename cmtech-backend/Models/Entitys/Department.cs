@@ -15,7 +15,7 @@ namespace cmtech_backend.Models.Entitys
         public virtual Org Org { get; set; }
 
         [JsonIgnore]
-        public List<User> Users { get; set; }
+        public List<User> Users { get; set; } = new();
     }
 
 }
