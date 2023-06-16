@@ -9,8 +9,8 @@ namespace cmtech_backend.Services.Interfaces
 
         public Task<UserDto> Create(UserDto user);
 
-        public Task<User> Update(UserDto user);
+        public Task<UserDto> Update(UserDto user);
 
-        public Task<List<User>> Delete(int id);
+        public Task<List<UserDto>> Delete(int id);
     }
 }

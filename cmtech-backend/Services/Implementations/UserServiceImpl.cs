@@ -38,9 +38,9 @@ namespace cmtech_backend.Services.Implementations
             return _userConverter.Parse(newUser);
         }
 
-        public async Task<List<User>> Delete(int userId)
+        public async Task<List<UserDto>> Delete(int userId)
         {
-            return await _userRepository.Delete(userId);
+            return _userConverter.Parse(await _userRepository.Delete(userId));
         }
 
         public async Task<List<UserDto>> FindAll()
@@ -48,10 +48,10 @@ namespace cmtech_backend.Services.Implementations
             return _userConverter.Parse(await _userRepository.FindAll());
         }
 
-        public async Task<User> Update(UserDto user)
+        public async Task<UserDto> Update(UserDto user)
         {
             User newUser = await NewUser(user);
-            return await _userRepository.Update(newUser);
+            return _userConverter.Parse(await _userRepository.Update(newUser));
         }
 
         private async Task<User> NewUser(UserDto user)

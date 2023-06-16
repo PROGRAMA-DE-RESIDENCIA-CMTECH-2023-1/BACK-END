@@ -18,6 +18,7 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Email = parser.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(parser.Password),
                 Profile_id = parser.ProfileId,
+                Org_id = parser.OrgId,
                 DateRegister = DateTime.UtcNow
             };
         }
