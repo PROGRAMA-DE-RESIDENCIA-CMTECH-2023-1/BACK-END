@@ -29,7 +29,8 @@ namespace cmtech_backend.Models.Converter.Implementations
             {
                 Id = parser.Id,
                 Name = parser.Name,
-                Org_id = parser.Org_id
+                Org_id = parser.Org_id,
+                Org = parser.Org.Name
             };
         }
 
