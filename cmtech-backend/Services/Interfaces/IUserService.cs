@@ -7,7 +7,7 @@ namespace cmtech_backend.Services.Interfaces
     {
         public Task<List<User>> FindAll();
 
-        public Task<UserDto> Create(UserDto user);
+        public Task<UserDto> Create(UserRegisterDto user);
 
         public Task<User> Update(UserDto user);
 

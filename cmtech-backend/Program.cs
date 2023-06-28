@@ -22,6 +22,7 @@ builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(builder.
 builder.Services.AddScoped<IRepository<User>, UserRepositoryImpl>();
 builder.Services.AddScoped<IRepository<Org>, OrgRepositoryImpl>();
 builder.Services.AddScoped<IRepository<Department>, DepartmentRepositoryImpl>();
+builder.Services.AddScoped<IUserOrganizationRepository, UserOrganizationRepositoryImpl>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryImpl<>));
 builder.Services.AddScoped<IProfileService, ProfileServiceImpl>();
 builder.Services.AddScoped<IGroupService, GroupServiceImpl>();

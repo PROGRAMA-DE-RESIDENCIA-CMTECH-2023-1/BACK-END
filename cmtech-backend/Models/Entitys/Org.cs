@@ -29,5 +29,7 @@ namespace cmtech_backend.Models.Entitys
 
         [JsonIgnore]
         public List<Department> Departments { get; set; }
+
+        public List<UserOrganization> UserOrganizations { get; set; }
     }
 }

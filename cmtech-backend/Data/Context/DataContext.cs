@@ -16,6 +16,8 @@ namespace cmtech_backend.Data.Context
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<UserOrganization> UserOrganizations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Group>()
@@ -43,10 +45,16 @@ namespace cmtech_backend.Data.Context
                 .WithOne(d => d.Org)
                 .HasForeignKey(d => d.Org_id);
 
-            modelBuilder.Entity<Org>()
-                .HasMany(o => o.Users)
-                .WithOne(u => u.Org)
-                .HasForeignKey(u => u.Org_id);
+            modelBuilder.Entity<UserOrganization>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.UserOrganizations)
+                .HasForeignKey(u => u.UserId);
+
+            modelBuilder.Entity<UserOrganization>()
+                .HasOne(o => o.Org)
+                .WithMany(u => u.UserOrganizations)
+                .HasForeignKey(u => u.OrganizationId);
+
         }
     }
 }

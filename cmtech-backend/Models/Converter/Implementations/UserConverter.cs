@@ -6,7 +6,7 @@ using System;
 
 namespace cmtech_backend.Models.Converter.Implementations
 {
-    public class UserConverter : IParser<UserDto, User>, IParser<User, UserDto>
+    public class UserConverter : IParser<UserDto, User>, IParser<User, UserDto>, IParser<UserRegisterDto, User>
     {
         public User Parse(UserDto parser)
         {
@@ -37,8 +37,6 @@ namespace cmtech_backend.Models.Converter.Implementations
                 Id = parser.Id,
                 Name = parser.Name,
                 Email = parser.Email,
-                Org = parser.Org?.Name,
-                OrgId = parser.Org_id,
                 Profile = parser.Profile.Name,
                 ProfileId = parser.Profile_id,
                 Department = parser.Department?.Name,
@@ -47,6 +45,27 @@ namespace cmtech_backend.Models.Converter.Implementations
         }
 
         public List<UserDto> Parse(List<User> parser)
+        {
+            if (parser == null) throw new ArgumentNullException();
+            return parser.Select(user => Parse(user)).ToList();
+        }
+
+        public User Parse(UserRegisterDto parser)
+        {
+            if (parser == null) throw new ArgumentNullException();
+            return new User
+            {
+                Id = parser.Id,
+                Name = parser.Name,
+                Email = parser.Email,
+                Password = BCrypt.Net.BCrypt.HashPassword(parser.Password),
+                Profile_id = parser.ProfileId,
+                Department_id = parser.DepartmentId,
+                DateRegister = DateTime.UtcNow
+            };
+        }
+
+        public List<User> Parse(List<UserRegisterDto> parser)
         {
             if (parser == null) throw new ArgumentNullException();
             return parser.Select(user => Parse(user)).ToList();

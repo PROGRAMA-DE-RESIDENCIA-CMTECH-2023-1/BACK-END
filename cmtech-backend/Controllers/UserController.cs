@@ -18,14 +18,14 @@ namespace cmtech_backend.Controllers
             _userService = userService;
         }
 
-        [HttpGet, Authorize]
+        [HttpGet, AllowAnonymous]
         public async Task<IActionResult> FindAll()
         {
             return Ok(await _userService.FindAll());
         }
 
-        [HttpPost, Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Create(UserDto createUser)
+        [HttpPost, AllowAnonymous]
+        public async Task<IActionResult> Create(UserRegisterDto createUser)
         {
             string chars = "abcdefghijklmnropqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             Random random = new();
@@ -36,7 +36,7 @@ namespace cmtech_backend.Controllers
             return Ok(user);
         }
 
-        [HttpPut, Authorize(Roles = "Administrador")]
+        [HttpPut, AllowAnonymous]
         public async Task<IActionResult> Update(UserDto updateUser)
         {
             try
@@ -52,7 +52,7 @@ namespace cmtech_backend.Controllers
             
         }
 
-        [HttpDelete, Authorize(Roles = "Administrador")]
+        [HttpDelete, AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
             try

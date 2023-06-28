@@ -43,7 +43,7 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<Org?> FindById(int? id)
         {
             if (id == null) return null;
-            Org org = await _orgs.FirstAsync(o => o.Id == id);
+            Org org = await _orgs.FirstOrDefaultAsync(o => o.Id == id);
             return org ?? throw new NotFoundException("Organização não encontrada");
         }
 

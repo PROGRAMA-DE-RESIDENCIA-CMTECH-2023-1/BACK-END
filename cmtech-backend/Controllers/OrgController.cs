@@ -24,7 +24,7 @@ namespace cmtech_backend.Controllers
             return Ok(await _orgService.FindAll());
         }
 
-        [HttpPost, Authorize(Roles = "Administrador")]
+        [HttpPost, AllowAnonymous]
         public async Task<IActionResult> Create(OrgDto createOrg)
         {
             return Ok(await _orgService.Create(createOrg));

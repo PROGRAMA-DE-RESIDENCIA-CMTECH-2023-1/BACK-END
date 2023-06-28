@@ -1,4 +1,6 @@
-﻿namespace cmtech_backend.Models.Dtos
+﻿using cmtech_backend.Models.Entitys;
+
+namespace cmtech_backend.Models.Dtos
 {
     public class OrgDto
     {
@@ -15,5 +17,7 @@
         public string Group { get; set; }
 
         public int GroupId { get; set; }
+
+        public List<UserOrganizationDto> UserOrganizations { get; set; }
     }
 }

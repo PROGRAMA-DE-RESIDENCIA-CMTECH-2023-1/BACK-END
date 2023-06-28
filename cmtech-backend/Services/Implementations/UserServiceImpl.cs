@@ -17,17 +17,20 @@ namespace cmtech_backend.Services.Implementations
 
         private readonly IRepository<Department> _departmentRepository;
 
+        private readonly IUserOrganizationRepository _userOrganizationRepository;
+
         private readonly UserConverter _userConverter;
 
-        public UserServiceImpl(IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository, IRepository<Department> departmentRepository)
+        public UserServiceImpl(IUserOrganizationRepository userOrganizationRepository, IRepository<User> userRepository, IRepository<Org> orgRepository, IRepository<Profile> profileRepository, IRepository<Department> departmentRepository)
         {
             _userRepository = userRepository;
             _orgRepository = orgRepository;
             _profileRepository = profileRepository;
             _userConverter = new UserConverter();
             _departmentRepository = departmentRepository;
+            _userOrganizationRepository = userOrganizationRepository;
         }
-        public async Task<UserDto> Create(UserDto user)
+        public async Task<UserDto> Create(UserRegisterDto user)
         {
             User newUser = await NewUser(user);
             return _userConverter.Parse(await _userRepository.Create(newUser));
@@ -51,14 +54,27 @@ namespace cmtech_backend.Services.Implementations
 
         private async Task<User> NewUser(UserDto user)
         {
-            Org org = await _orgRepository.FindById(user.OrgId);
 
             Profile profile = await _profileRepository.FindById(user.ProfileId);
 
             Department department = await _departmentRepository.FindById(user.DepartmentId);
 
             User newUser = _userConverter.Parse(user);
-            newUser.Org = org;
+            newUser.UserOrganizations = await _userOrganizationRepository.GetAllByUserId(user.Id);
+            newUser.Profile = profile;
+            newUser.Department = department;
+            return newUser;
+        }
+
+        private async Task<User> NewUser(UserRegisterDto user)
+        {
+
+            Profile profile = await _profileRepository.FindById(user.ProfileId);
+
+            Department department = await _departmentRepository.FindById(user.DepartmentId);
+
+            User newUser = _userConverter.Parse(user);
+            newUser.UserOrganizations = await _userOrganizationRepository.GetAllByUserId(user.Id);
             newUser.Profile = profile;
             newUser.Department = department;
             return newUser;

@@ -21,15 +21,14 @@ namespace cmtech_backend.Models.Entitys
         public int? Department_id { get; set; }
 
         public virtual Department? Department { get; set; }
-
-        [Column("organizacao_id")]
-        public int? Org_id { get; set; }
-
-        public virtual Org? Org { get; set; }
+        
 
         [Column("perfil_id")]
         public int Profile_id { get; set; }
 
         public virtual Profile Profile { get; set; }
+
+        public List<UserOrganization> UserOrganizations { get; set; }
     }
+
 }
