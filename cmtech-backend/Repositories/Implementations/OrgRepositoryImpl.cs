@@ -49,7 +49,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<Org?> FindByName(string name)
         {
-            return await _orgs.FirstAsync(o => o.Name == name);
+            return await _orgs.FirstOrDefaultAsync(o => o.Name == name);
         }
 
         public async Task<Org> Update(Org org)

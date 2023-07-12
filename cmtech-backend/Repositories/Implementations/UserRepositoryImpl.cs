@@ -38,7 +38,7 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<User?> FindById(int? id)
         {
             if (id == null) return null;
-            User? user = await _users.Include(u => u.Department).Include(u => u.UserOrganizations).ThenInclude(u => u.Org).Include(u => u.Profile).FirstAsync(u => u.Id == id);
+            User? user = await _users.Include(u => u.Department).Include(u => u.UserOrganizations).ThenInclude(u => u.Org).Include(u => u.Profile).FirstOrDefaultAsync(u => u.Id == id);
             return user ?? throw new NotFoundException("Usuário não encontrado");
         }
 
@@ -49,7 +49,7 @@ namespace cmtech_backend.Repositories.Implementations
 
         public async Task<User?> FindByName(string name)
         {
-            return await _users.Include(u => u.Department).Include(u => u.UserOrganizations).ThenInclude(u => u.Org).Include(u => u.Profile).FirstAsync(u => u.Email == name);
+            return await _users.Include(u => u.Department).Include(u => u.UserOrganizations).ThenInclude(u => u.Org).Include(u => u.Profile).FirstOrDefaultAsync(u => u.Email == name);
         }
 
         public async Task<User> Update(User user)

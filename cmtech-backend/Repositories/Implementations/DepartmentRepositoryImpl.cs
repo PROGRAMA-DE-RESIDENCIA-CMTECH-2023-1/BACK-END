@@ -1,6 +1,7 @@
 ﻿using cmtech_backend.Exceptions;
 using cmtech_backend.Models.Entitys;
 using cmtech_backend.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace cmtech_backend.Repositories.Implementations
 {
@@ -40,13 +41,13 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<Department?> FindById(int? id)
         {
             if (id == null) return null;
-            Department? department = await _departments.FirstAsync(d => d.Id == id);
+            Department? department = await _departments.FirstOrDefaultAsync(d => d.Id == id);
             return department ?? throw new NotFoundException("Departamento não encontrado");
         }
 
         public async Task<Department?> FindByName(string name)
         {
-            return await _departments.FirstAsync(d => d.Name == name);
+            return await _departments.FirstOrDefaultAsync(d => d.Name == name);
         }
 
         public async Task<Department> Update(Department department)

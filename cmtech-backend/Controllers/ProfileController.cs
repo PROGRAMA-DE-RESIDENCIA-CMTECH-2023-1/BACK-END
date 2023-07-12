@@ -25,7 +25,7 @@ namespace cmtech_backend.Controllers
             return await _profileService.FindAll();
         }
 
-        [HttpPost, Authorize(Roles = "Administrador")]
+        [HttpPost, AllowAnonymous]
         public async Task<Profile> Create(ProfileDto profile)
         {
             return await _profileService.Create(profile);

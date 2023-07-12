@@ -25,7 +25,7 @@ namespace cmtech_backend.Controllers
             return Ok(await _departmentService.FindAll());
         }
 
-        [HttpPost, Authorize(Roles = "Administrador")]
+        [HttpPost, AllowAnonymous]
         public async Task<IActionResult> Create(DepartmentDto createDepartment)
         {
             return Ok(await _departmentService.Create(createDepartment));

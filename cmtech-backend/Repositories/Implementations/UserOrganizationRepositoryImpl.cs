@@ -38,7 +38,7 @@ namespace cmtech_backend.Repositories.Implementations
         public async Task<UserOrganization?> FindById(int? id)
         {
             if (id == null) return null;
-            UserOrganization? user = await _userOrganizations.Include(u => u.User).Include(u => u.Org).FirstAsync(u => u.Id == id);
+            UserOrganization? user = await _userOrganizations.Include(u => u.User).Include(u => u.Org).FirstOrDefaultAsync(u => u.Id == id);
             return user ?? throw new NotFoundException("Organização do usuário não encontrada");
         }
 

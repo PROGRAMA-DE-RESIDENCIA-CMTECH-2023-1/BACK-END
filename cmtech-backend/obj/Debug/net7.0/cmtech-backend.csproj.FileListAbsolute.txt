@@ -96,3 +96,7 @@ C:\Users\user\Desktop\backend-cmtech\cmtech-backend\obj\Debug\net7.0\refint\cmte
 C:\Users\user\Desktop\backend-cmtech\cmtech-backend\obj\Debug\net7.0\cmtech-backend.pdb
 C:\Users\user\Desktop\backend-cmtech\cmtech-backend\obj\Debug\net7.0\cmtech-backend.genruntimeconfig.cache
 C:\Users\user\Desktop\backend-cmtech\cmtech-backend\obj\Debug\net7.0\ref\cmtech-backend.dll
+C:\Users\user\Desktop\backend-cmtech\cmtech-backend\bin\Debug\net7.0\Humanizer.dll
+C:\Users\user\Desktop\backend-cmtech\cmtech-backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\user\Desktop\backend-cmtech\cmtech-backend\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\user\Desktop\backend-cmtech\cmtech-backend\bin\Debug\net7.0\System.CodeDom.dll
